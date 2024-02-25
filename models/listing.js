@@ -12,7 +12,7 @@ const listingSchema = new Schema({
         default :"https://unsplash.com/photos/a-view-of-the-ocean-from-the-top-of-a-hill-o_P3BFZP2EI", 
         set: (v) => v=== ""
         ? "https://unsplash.com/photos/a-view-of-the-ocean-from-the-top-of-a-hill-o_P3BFZP2EI" 
-        : v,
+        : v
     },
     price: Number,
     location: String,
