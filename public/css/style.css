@@ -59,7 +59,7 @@ body{
 
 /* cards */
 
-.card{
+.listing-card{
     border: none !important ;
     margin-bottom:2rem;
 }
@@ -110,7 +110,7 @@ body{
 /* show page */
 
 .show-img{
-    height:30vh;
+    height:35vh;
 }
 
 .btns{
