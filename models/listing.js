@@ -10,11 +10,8 @@ const listingSchema = new Schema({
     },
     description: String,
     image:{
-        type: String,
-        default :"https://luxurystays.in/villas/AzulD/BD2.jpg", 
-        set: (v) => v=== ""
-        ? "https://luxurystays.in/villas/AzulD/BD2.jpg" 
-        : v,
+        url: String,
+        filename: String,
     },
     price: Number,
     location: String,
