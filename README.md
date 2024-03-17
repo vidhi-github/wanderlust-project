@@ -1,2 +1,2 @@
-# wanderproject
-contains code of the major project initial part (backened).
+# wanderlust-project
+It consists of the code of the project.
