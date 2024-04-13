@@ -12,6 +12,8 @@ module.exports.createReview = async (req, res) => {
         }
 
         let newReview = new Review(req.body.review);
+        console.log("hiiiiiii");
+        console.log(req.user._id);
         newReview.author = req.user._id;
         console.log(newReview);
 
@@ -28,6 +30,7 @@ module.exports.createReview = async (req, res) => {
         res.redirect("/listings");
     }
 };
+
 
 module.exports.destroyReview = async(req,res)=>{
     let { id, reviewId } = req.params;
