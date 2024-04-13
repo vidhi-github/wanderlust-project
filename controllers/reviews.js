@@ -1,19 +1,32 @@
 const Listing = require("../models/listing");
 const Review = require("../models/reviews");
 
-module.exports.createReview = async(req,res)=>{
-    let listing= await Listing.findById(req.params.id);
-    let newReview = new Review(req.body.review);
-    newReview.author = req.user._id;
-    console.log(newReview);
-    listing.reviews.push(newReview);
+module.exports.createReview = async (req, res) => {
+    try {
+        let listing = await Listing.findById(req.params.id);
+        
+        if (!listing) {
+            // Listing not found
+            req.flash("error", "Listing not found.");
+            return res.redirect("/listings");
+        }
 
-    await newReview.save();
-    await listing.save();
+        let newReview = new Review(req.body.review);
+        newReview.author = req.user._id;
+        console.log(newReview);
 
-    req.flash("success","New review created!");
+        listing.reviews.push(newReview);
+        await newReview.save();
+        await listing.save();
 
-    res.redirect(`/listings/${ listing._id}`);
+        req.flash("success", "New review created!");
+        res.redirect(`/listings/${listing._id}`);    
+    } 
+    catch (err) {
+        console.error(err);
+        req.flash("error", "An error occurred. Please try again later.");
+        res.redirect("/listings");
+    }
 };
 
 module.exports.destroyReview = async(req,res)=>{
